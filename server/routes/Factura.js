@@ -927,4 +927,3 @@ router.post("/cancel-entrega/:idOrden", async (req, res) => {
 });
 
 export default router;
-s;
