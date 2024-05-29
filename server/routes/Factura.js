@@ -93,7 +93,9 @@ router.post("/add-factura", openingHours, async (req, res) => {
     } = infoOrden;
 
     // Consultar el último registro ordenado por el campo 'index' de forma descendente
-    const ultimoRegistro = await Factura.findOne().sort({ index: -1 }).lean();
+    const ultimoRegistro = await Factura.findOne({}, { index: 1, _id: 0 })
+      .sort({ index: -1 })
+      .lean();
 
     // Obtener el último índice utilizado o establecer 0 si no hay registros
     const ultimoIndice = ultimoRegistro ? ultimoRegistro.index : 0;
@@ -925,3 +927,4 @@ router.post("/cancel-entrega/:idOrden", async (req, res) => {
 });
 
 export default router;
+s;
